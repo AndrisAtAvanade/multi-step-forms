@@ -1,15 +1,17 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import useFormData from "../../store/storeForms";
 
 const FormStep1 = () => {
   const navigate = useNavigate();
-  const formRef = React.createRef()
+  const formRef = React.createRef();
+  const setFormData = useFormData(state => state.setFormData);
 
   const onClickHandler = (e) => {
     e.preventDefault();
     const data = new FormData(formRef.current);
     const formData = Object.fromEntries(data);
-    console.log('onClickHandler', formData);
+    setFormData(formData);
     navigate('/form/step2');
   }
 
