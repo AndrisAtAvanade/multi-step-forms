@@ -11,7 +11,8 @@ const FormStep1 = () => {
     e.preventDefault();
     const data = new FormData(formRef.current);
     const formData = Object.fromEntries(data);
-    setFormData(formData);
+    const obj = {[formRef.current.name]: formData}
+    setFormData(obj);
     navigate('/form/step2');
   }
 
@@ -20,10 +21,10 @@ const FormStep1 = () => {
       <h1>This is Form Step 1 page!</h1>
       <h3>Add your name</h3>
 
-      <form ref={formRef}>
+      <form name="formStep1" ref={formRef}>
         <label htmlFor="userName">
           <p>Your Name</p>
-          <input id="userName" type="text" name="userName"/>
+          <input id="userName" type="text" name="userName" />
         </label>
         <label htmlFor="userSurname">
           <p>Your Surname</p>
